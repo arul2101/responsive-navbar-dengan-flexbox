@@ -1,0 +1,141 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  font-family: inherit;
+}
+
+.logo h4{
+  font-size: 32px;
+}
+
+/* Navbar */
+nav{
+  display: flex;
+  background: rgb(36, 94, 131);
+  height: 80px;
+  align-items: center;
+  justify-content: space-around;
+}
+
+nav ul{
+  display: flex;
+  list-style: none;
+  justify-content: space-between;
+  width: 40%;
+}
+
+nav ul li a{
+  text-decoration: none;
+  color: white;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+nav ul li a:hover{
+  border: 2px solid white;
+  border-radius: 5px;
+}
+
+nav ul li a.active{
+  border: 1px solid white;
+}
+
+
+/* Hamburger Menu */
+.menu-toggle{
+  display: none;
+  height: 20px;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.menu-toggle input{
+  position: absolute;
+  opacity: 0;
+  width: 40px;
+  height: 28px;
+  left: -7px;
+  top: -3px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.menu-toggle span{
+  display: block;
+  width: 28px;
+  height: 3px;
+  background-color: white;
+  border-radius: 3px;
+  transition: .3s;
+}
+
+/* Hamburger menu animation */
+.menu-toggle span:nth-child(2) {
+transform-origin: 0 0;
+}
+.menu-toggle input:checked ~ span:nth-child(2){
+  transform: rotate(45deg) translate(-1px, -1px);
+}
+.menu-toggle span:nth-child(4) {
+  transform-origin: 0 100%;
+}
+.menu-toggle input:checked ~ span:nth-child(4){
+  transform: rotate(-45deg) translate(-1px, 0);
+}
+.menu-toggle input:checked ~ span:nth-child(3) {
+  transform: scale(0);
+}
+
+/* Responsive Breakpoint */
+
+/* Ukuran tablet : 868px */
+@media screen and (max-width: 868px) {
+  nav ul{
+    width: 60%;
+  }
+}
+
+/* Ukuran Mobile : 676px */
+@media screen and (max-width: 676px) {
+  nav ul{
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    top: 80px;
+    left: -600px;
+    background: #2f3640;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    transition: .5s;
+    opacity: 0;
+  }
+
+  nav ul li{
+    margin-top: -200px;
+  }
+
+  nav ul li a{
+    font-size: 20px;
+  }
+
+  nav ul li a.active, nav ul li a:hover{
+    border: none;
+    color: #3498db;
+  }
+
+  .menu-toggle{
+    display: flex;
+  }
+
+  nav ul.show{
+    left: 0;
+    opacity: 1;
+  }
+}
